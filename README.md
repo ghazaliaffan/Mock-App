@@ -1,24 +1,30 @@
-# README
+# Available scripts
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Frontend
 
-Things you may want to cover:
+To install dependencies for frontend run this command in frontend folder
 
-* Ruby version
+```
+npm install
+```
 
-* System dependencies
+To run app 
 
-* Configuration
+```
+npm start
+```
 
-* Database creation
 
-* Database initialization
+## Backend
 
-* How to run the test suite
+To create new db on backend
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rails db:create
+```
 
-* Deployment instructions
+To run app 
 
-* ...
+```
+rails s
+```
