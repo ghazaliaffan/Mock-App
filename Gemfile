@@ -13,6 +13,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 
 gem 'devise'
+gem 'responders'
 
 gem 'wdm', '>= 0.1.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
