@@ -1,27 +1,45 @@
 class Api::UsersController < Api::BaseController
+  before_action :find_user, only: [:show, :update]
+
   def index
-    respond_with User.all
+    users = User.all
+    render json: users
   end
 
   def create
-    respond_with :api, User.create(user_params)
+    user = User.create(user_params)
+    if user
+      render json: "User Created!"
+    else
+      render json: user.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    respond_with User.destroy(params[:id])
+    User.destroy(params[:id])
   end
 
   def show
-
+    if user
+      render json: user
+    else
+      render json: {
+        error: "No such user",
+        status: 400
+      }, status: 400
+    end
   end
 
   def update
-    user = User.find(params["id"])
     user.update_attributes(user_params)
-    respond_with user, json: user
+    render json: user
   end
 
   private
+
+  def find_user
+    user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:email, :name, :phone, :password, :admin)
