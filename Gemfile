@@ -14,6 +14,7 @@ gem 'puma', '~> 3.11'
 
 gem 'devise'
 gem 'responders'
+gem 'figaro'
 
 gem 'wdm', '>= 0.1.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

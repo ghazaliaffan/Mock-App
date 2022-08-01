@@ -1,11 +1,26 @@
 import './users.css'
+import { useNavigate} from 'react-router-dom';
+// import axios from "axios"
+
 const UserList = () => {
+
+  const navigate = useNavigate()
+
+  const navigateCreateUsers = () => {
+    // 👇️ navigate to /createUsers
+    let path = 'createUser'
+    navigate(path);
+  };
 
   return (
     <div className='main-container'>
       <div className='title'>
         <h2>Users</h2>
-        <button className='btn btn-primary'>Create User</button>
+        <button onClick={navigateCreateUsers} className='btn btn-primary'>Create User</button>
+
+        {/* <Routes>
+          <Route path="/createUser" />
+        </Routes> */}
       </div>
 
       <table>
