@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
+  # match '*all', controller: 'application', action: 'cors_preflight_check', via: [:options]
   devise_for :users
   namespace :api do
     root 'home#index'
