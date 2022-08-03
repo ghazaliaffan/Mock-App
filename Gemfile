@@ -14,8 +14,9 @@ gem 'puma', '~> 3.11'
 
 gem 'devise'
 gem 'responders'
+gem 'rack-cors', :require => 'rack/cors'
 
-gem 'wdm', '>= 0.1.0'
+#gem 'wdm', '>= 0.1.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

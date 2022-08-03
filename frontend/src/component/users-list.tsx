@@ -1,13 +1,15 @@
 import './users.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const UserList = () => {
   interface User {
     id: number;
     name: string;
-    email: number;
+    email: string;
     phone: string;
+    admin?: boolean;
   }
 
  const [userState, setUserState] = useState<Array<User>>([]);
@@ -26,11 +28,17 @@ const UserList = () => {
     })
   }, []);
 
+  const navigate = useNavigate()
+  const routeChange = () =>{ 
+    let path = `/CreateUser`; 
+    navigate(path)
+  }
+
   return (
     <div className='main-container'>
       <div className='title'>
         <h2>Users</h2>
-        <button className='btn btn-primary'>Create User</button>
+        <button onClick={routeChange} className='btn btn-primary'>Create User</button>
       </div>
     <table>
     <tr>

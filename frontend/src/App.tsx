@@ -6,12 +6,8 @@ function App(): JSX.Element {
   return (
     <div className="App">
         <Routes>
-          <Route path = "/">
-            <UserList/>
-          </Route>
-          <Route path = "\create-user">
-            <CreateUser/>
-          </Route>
+          <Route path = "/" element={<UserList/>}/>
+          <Route path = "/CreateUser" element={<CreateUser/>}/>
         </Routes>
     </div>
   );
