@@ -29,16 +29,36 @@ const UserList = () => {
   }, []);
 
   const navigate = useNavigate()
-  const routeChange = () =>{ 
+
+  const routeChangeEditUser = (userState: any) => {
+    let path = `/EditUser`
+    navigate(path, { state: userState});
+  }
+
+  const routeChangeCreateUser = () =>{ 
     let path = `/CreateUser`; 
     navigate(path)
+  }
+
+  const removeUser = (id: any, i: any) => {
+    axios({
+      method: 'DELETE',
+      url: `http://localhost:3001/api/users/${id}`
+    })
+    .then(() => {
+      setUserState((prev) => {
+        const newList = [...prev]
+        newList.splice(i, 1);
+        return newList;
+      });
+    })
   }
 
   return (
     <div className='main-container'>
       <div className='title'>
         <h2>Users</h2>
-        <button onClick={routeChange} className='btn btn-primary'>Create User</button>
+        <button onClick={routeChangeCreateUser} className='btn btn-primary'>Create User</button>
       </div>
     <table>
     <tr>
@@ -53,7 +73,7 @@ const UserList = () => {
     {userState.map((user) => (
       <div key={user.id}>
       <table>
-        <tr>
+        <tr key={user.id}>
           <td>{user.id}</td>
           <td>{user.name}</td>
           <td>{user.email}</td>
@@ -63,11 +83,11 @@ const UserList = () => {
               Send
             </button>
           </td>
-          <td>
-            <button className="btn btn-primary">
+          <td>    
+            <button onClick={()=>routeChangeEditUser(user)} className="btn btn-primary">
               Edit
             </button>
-            <button  className="btn btn-danger">
+            <button onClick={()=>removeUser(user.id, user.id)} className="btn btn-danger">
               Delete
             </button>
           </td>
